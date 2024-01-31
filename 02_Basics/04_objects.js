@@ -33,12 +33,40 @@ const obj4 = {5:"e", 6:"f"};
 // console.log(obj3); // { '1': 'a', '2': 'b', '3': 'c', '4': 'd', '5': 'e', '6': 'f' }
 
 const obj3 = {...obj1, ...obj2, ...obj4}; // it is most widely used method for combining i.e. spread operator
-console.log(obj3);
+// console.log(obj3);
 
 // some methods
-console.log(User1);
-console.log(Object.keys(User1));
-console.log(Object.values(User1));
-console.log(Object.entries(User1));
-console.log(User1.hasOwnProperty("isLoggedIn"));
+// console.log(User1);
+// console.log(Object.keys(User1));
+// console.log(Object.values(User1));
+// console.log(Object.entries(User1));
+// console.log(User1.hasOwnProperty("isLoggedIn"));
 
+// ----------------------------------------objects destructure and json(API)---------------------------------------
+// objects destructure
+const course = {
+    coursename: "JS course",
+    price: "999",
+    courseInstructor: "hitesh choudhary"
+}
+// course.courseInstructor; // we can call the object values
+// object destructure
+// const {courseInstructor} = course;
+const {courseInstructor: instructor} = course; // we can also give name as suitable to us 
+console.log(instructor);
+
+// APIs
+// it is in form json(javascript object notation), mostly its key and value are in string as shown below
+// {
+//     "name": "hitesh"
+//     "coursename": "JS Course",
+//     "price": "free",
+// }
+
+// APIs is also in form of array
+[
+    {},
+    {},
+    {}
+]
+// All are in form of JSON whether it is array notation or object notation and also it is language independent
