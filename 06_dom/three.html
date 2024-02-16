@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM learning</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    
+</body>
+<script>
+    function createNewDiv(name){
+
+        const div = document.createElement('div');
+        // console.log(div);
+        div.className = "main"
+        div.id = Math.round(Math.random()*10 + 1);
+        // we can add more attributes that are not directly defined
+        div.setAttribute("title", "lang"); // it only set the value doesnot overwrite the previous and make the change in one go
+        div.style.backgroundColor = "green";
+        div.style.padding = "10px";
+        div.style.margin = "10px";
+        div.style.borderRadius = "50px";
+        // attaching of element
+        // div.innerText = "JavaScript" // it overwrite the values of previous text and make the change in two go first it fetch the values then overwrites it
+        // const addText = document.createTextNode("JavaScript");
+        const addText = document.createTextNode(name);
+        div.appendChild(addText);
+        
+        // we add those attributes but its not showing on the page to view the changes on the page we need to atach it to
+        document.body.appendChild(div);
+    }
+
+    createNewDiv("Java");
+    createNewDiv("JavaScript");
+    createNewDiv("Ruby");
+    createNewDiv("Python");
+
+</script>
+</html>
