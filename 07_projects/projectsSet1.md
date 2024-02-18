@@ -56,3 +56,17 @@ form.addEventListener('submit', function (e) {
   }
 });
 ```
+
+## Project 3
+```javascript
+const clock = document.getElementById('clock');
+// const clock = document.querySelector("#clock"); // both are same
+
+// setInterval(funciton(){}, miliseconds) it has fixed syntax so remember it
+// we can run a method continuously with a specific interval of time in miliseconds
+
+setInterval(function () {
+  let date = new Date();
+  clock.innerHTML = date.toLocaleTimeString();
+}, 1000);
+```
