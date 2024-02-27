@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <div >
+        <h2>Amazing Images</h2>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //js works/runs sequentially but some are the exception here so will study it.
+    //sometime some tasks can be done asynchronously while performing on sequential basis.
+    // events- these are invoked on the basis of some activity on the browser like hovering, click etc.
+    // onclick="alert('owl')" - in javascript we shouldn't add events directly on the tags because when the code will scale the it will cause the problem
+    
+    // 2nd approach
+    // document.getElementById("owl").onclick = function(){
+    //     alert("owl clicked");
+    // } 
+    //it it also a good approach but it does not provide much features so we use 3rd approach i.e. eventlisteners
+
+    // 3rd approach
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert('owl clicked again');
+    // }, false); // this is the syntax and the 3rd parameter is very important and it take boolean values, its default is also false
+    
+    // type, timestamp, preventDefault
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // event propagation
+    // as we are giving 3rd paramenter in the eventlistener by default is is false
+    // true mean event capturing and false means event bubbling(mostly used in the market)
+    
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside ul")
+    // }, false);
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked");
+    //     e.stopPropagation();
+    // }, false);
+
+    // it is bubbling up i.e. it track the events from inside to out
+    // if we change the false parameter to true the i.e. event capturing it goes top to bottom
+    // if we want to stop event propagation then we can use e.stopPropagation()
+
+    //preventDefault()
+    // document.getElementById('google').addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     e.stopPropagation(); // to stop bubbling
+    //     console.log('google clicked');
+    // }, false);
+
+// Task
+    document.querySelector("#images").addEventListener('click', function (e) {
+        // console.log(e); // it will print the event occured
+        // console.log(e.target); // it will print the target of the event, from where it(event) is occured
+        // we can take multiple values after target as shown below
+        // console.log(e.target.parentNode);
+        console.log(e.target.tagName); // it gives the value of tag on which event it occured
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+        // if we click near google not on it, by doing so it is removing the ul i.e. the parent of li so to prevent it we will apply some checks
+        
+        // let removeIt = e.target.parentNode;
+        // removeIt.remove(); // 1st approach
+        // removeIt.parentNode.removeChild(removeIt); // 2nd approach
+    }, false)
+</script>
+</html>
